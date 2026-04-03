@@ -117,17 +117,28 @@ h2 {
 </div>
 
 <script>
+<script>
+let tries = 0;
+
 function pickGift() {
-  let gifts = [
-    "🎧 Bluetooth Neckband FREE",
-    "🔌 Charger Cable Protector FREE",
-    "📱 Tempered Glass FREE"
-  ];
+  tries++;
 
-  let random = Math.floor(Math.random() * gifts.length);
+  let gift;
 
-  document.getElementById("result").innerText = gifts[random];
+  if (tries % 5 === 0) {
+    gift = "🎧 Bluetooth Neckband FREE";
+  } else {
+    let smallGifts = [
+      "🔌 Charger Cable Protector FREE",
+      "📱 Tempered Glass FREE"
+    ];
+    let random = Math.floor(Math.random() * smallGifts.length);
+    gift = smallGifts[random];
+  }
+
+  document.getElementById("result").innerText = gift;
 }
+</script>
 </script>
 </body>
 </html>
