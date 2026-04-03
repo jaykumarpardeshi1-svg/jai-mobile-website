@@ -105,6 +105,29 @@ h2 {
 <div class="footer">
   <p>© 2026 Jay Mobile Repairing Center</p>
 </div>
+<div class="card" style="text-align:center;">
+  <h2>🎁 Lucky Gift Game</h2>
+  <p>Ek gift choose karo aur jeeto FREE reward!</p>
 
+  <button onclick="pickGift()" style="padding:12px 20px; font-size:16px; background:#0d6efd; color:white; border:none; border-radius:8px;">
+    🎁 Try Your Luck
+  </button>
+
+  <h3 id="result" style="margin-top:15px; color:green;"></h3>
+</div>
+
+<script>
+function pickGift() {
+  let gifts = [
+    "🎧 Bluetooth Neckband FREE",
+    "🔌 Charger Cable Protector FREE",
+    "📱 Tempered Glass FREE"
+  ];
+
+  let random = Math.floor(Math.random() * gifts.length);
+
+  document.getElementById("result").innerText = gifts[random];
+}
+</script>
 </body>
 </html>
