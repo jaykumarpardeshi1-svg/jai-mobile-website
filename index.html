@@ -155,27 +155,6 @@ window.onload = function() {
   <h3 id="result" style="margin-top:15px; color:green;"></h3>
 </div>
 
-<script>
-let tries = 0;
 
-function pickGift() {
-  tries++;
-
-  let gift = "";
-
-  if (tries % 5 === 0) {
-    gift = "🎧 Bluetooth Neckband FREE";
-  } else {
-    let smallGifts = [
-      "🔌 Charger Cable Protector FREE",
-      "📱 Tempered Glass FREE"
-    ];
-    let random = Math.floor(Math.random() * smallGifts.length);
-    gift = smallGifts[random];
-  }
-
-  document.getElementById("result").innerText = gift;
-}
-</script>
 </body>
 </html>
