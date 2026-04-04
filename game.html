@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Spin & Win</title>
+
+<style>
+body {
+  text-align: center;
+  font-family: Arial;
+  background: #1a0f00;
+  color: white;
+}
+
+#wheel {
+  margin: 40px auto;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  border: 6px solid #ff6600;
+  position: relative;
+  transition: transform 3s ease-out;
+}
+
+.slice {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  background: #ff6600;
+  transform-origin: 100% 100%;
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+
+.slice:nth-child(1) { transform: rotate(0deg); }
+.slice:nth-child(2) { transform: rotate(120deg); }
+.slice:nth-child(3) { transform: rotate(240deg); }
+
+#pointer {
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 30px solid white;
+  margin: auto;
+}
+
+button {
+  padding: 15px 25px;
+  background: #ff6600;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+}
+
+#result {
+  margin-top: 20px;
+  font-size: 18px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🎡 Spin & Win</h1>
+
+<div id="pointer"></div>
+
+<div id="wheel">
+  <div class="slice"></div>
+  <div class="slice"></div>
+  <div class="slice"></div>
+</div>
+
+<button onclick="spin()">Spin Now</button>
+
+<h2 id="result"></h2>
+
+<script>
+let tries = 0;
+
+function spin() {
+  tries++;
+
+  let wheel = document.getElementById("wheel");
+  let result = document.getElementById("result");
+
+  let gifts = [
+    "🔌 Charger Cable Protector",
+    "📱 Tempered Glass",
+    "🎧 Bluetooth Neckband"
+  ];
+
+  let random;
+
+  if (tries % 3 === 0) {
+    random = 2;
+  } else {
+    random = Math.floor(Math.random() * 2);
+  }
+
+  let degree = 360 * 5 + (random * 120);
+
+  wheel.style.transform = "rotate(" + degree + "deg)";
+
+  setTimeout(() => {
+    result.innerText = "You Won: " + gifts[random];
+  }, 3000);
+}
+</script>
+
+</body>
+</html>
