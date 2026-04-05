@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Spin & Win</title>
+
+<style>
+body {
+  text-align: center;
+  font-family: Arial;
+  background: linear-gradient(135deg, #000, #1a1a1a);
+  color: #d4af37;
+}
+
+/* WHEEL */
+#wheel {
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  margin: 40px auto;
+  border: 8px solid gold;
+  position: relative;
+  overflow: hidden;
+  transition: transform 4s ease-out;
+}
+
+/* SECTIONS */
+.section {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  background: red;
+  transform-origin: 100% 100%;
+}
+
+/* COLORS */
+.sec1 { background:#ff3c3c; transform: rotate(0deg) skewY(-30deg); }
+.sec2 { background:#ffaa00; transform: rotate(72deg) skewY(-30deg); }
+.sec3 { background:#00c853; transform: rotate(144deg) skewY(-30deg); }
+.sec4 { background:#0091ea; transform: rotate(216deg) skewY(-30deg); }
+.sec5 { background:#aa00ff; transform: rotate(288deg) skewY(-30deg); }
+
+/* TEXT */
+.section span {
+  position: absolute;
+  top: 60%;
+  left: 60%;
+  transform: rotate(30deg);
+  font-size: 14px;
+  color: white;
+  font-weight: bold;
+}
+
+/* POINTER */
+#pointer {
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 30px solid gold;
+  margin: auto;
+}
+
+/* BUTTON */
+button {
+  padding: 14px 30px;
+  font-size: 18px;
+  background: gold;
+  border: none;
+  border-radius: 8px;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#result {
+  margin-top: 20px;
+  font-size: 22px;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>🎡 Spin & Win</h1>
+
+<div id="pointer"></div>
+
+<div id="wheel">
+
+  <div class="section sec1"><span>🎧 Headphones</span></div>
+  <div class="section sec2"><span>🔊 Speaker</span></div>
+  <div class="section sec3"><span>🎧 Neckband</span></div>
+  <div class="section sec4"><span>🔌 Cable</span></div>
+  <div class="section sec5"><span>🎧 Earbuds</span></div>
+
+</div>
+
+<button onclick="spin()">SPIN</button>
+
+<div id="result"></div>
+
+<audio id="sound" src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3"></audio>
+
+<script>
+let spinning = false;
+
+function spin() {
+  if (spinning) return;
+
+  spinning = true;
+
+  let wheel = document.getElementById("wheel");
+  let sound = document.getElementById("sound");
+
+  sound.play();
+
+  let deg = Math.floor(3000 + Math.random() * 1000);
+  wheel.style.transform = "rotate(" + deg + "deg)";
+
+  setTimeout(() => {
+    document.getElementById("result").innerHTML = "🎉 Congratulations! 🎊";
+    spinning = false;
+  }, 4000);
+}
+</script>
+
+</body>
+</html>
