@@ -7,17 +7,17 @@
 body {
   text-align: center;
   font-family: Arial;
-  background: linear-gradient(135deg, #000, #1a1a1a);
-  color: #d4af37;
+  background: #000;
+  color: gold;
 }
 
-/* WHEEL */
+/* BIG WHEEL */
 #wheel {
-  width: 350px;
-  height: 350px;
+  width: 420px;
+  height: 420px;
   border-radius: 50%;
-  margin: 40px auto;
-  border: 8px solid gold;
+  margin: 30px auto;
+  border: 10px solid gold;
   position: relative;
   overflow: hidden;
   transition: transform 4s ease-out;
@@ -28,8 +28,10 @@ body {
   position: absolute;
   width: 50%;
   height: 50%;
-  background: red;
   transform-origin: 100% 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* COLORS */
@@ -39,31 +41,28 @@ body {
 .sec4 { background:#0091ea; transform: rotate(216deg) skewY(-30deg); }
 .sec5 { background:#aa00ff; transform: rotate(288deg) skewY(-30deg); }
 
-/* TEXT */
+/* TEXT BIG */
 .section span {
-  position: absolute;
-  top: 60%;
-  left: 60%;
   transform: rotate(30deg);
-  font-size: 14px;
-  color: white;
+  font-size: 18px;
   font-weight: bold;
+  color: white;
 }
 
 /* POINTER */
 #pointer {
   width: 0;
   height: 0;
-  border-left: 20px solid transparent;
-  border-right: 20px solid transparent;
-  border-bottom: 30px solid gold;
+  border-left: 22px solid transparent;
+  border-right: 22px solid transparent;
+  border-bottom: 35px solid gold;
   margin: auto;
 }
 
 /* BUTTON */
 button {
-  padding: 14px 30px;
-  font-size: 18px;
+  padding: 16px 35px;
+  font-size: 20px;
   background: gold;
   border: none;
   border-radius: 8px;
@@ -72,9 +71,11 @@ button {
   cursor: pointer;
 }
 
+/* RESULT */
 #result {
   margin-top: 20px;
   font-size: 22px;
+  font-weight: bold;
 }
 </style>
 
@@ -105,9 +106,16 @@ button {
 <script>
 let spinning = false;
 
+let gifts = [
+  "🎧 Headphones",
+  "🔊 Speaker",
+  "🎧 Bluetooth Neckband",
+  "🔌 Charging Cable",
+  "🎧 Earbuds"
+];
+
 function spin() {
   if (spinning) return;
-
   spinning = true;
 
   let wheel = document.getElementById("wheel");
@@ -115,11 +123,14 @@ function spin() {
 
   sound.play();
 
-  let deg = Math.floor(3000 + Math.random() * 1000);
+  let randomIndex = Math.floor(Math.random() * gifts.length);
+
+  let deg = 360 * 6 + (randomIndex * 72); 
   wheel.style.transform = "rotate(" + deg + "deg)";
 
   setTimeout(() => {
-    document.getElementById("result").innerHTML = "🎉 Congratulations! 🎊";
+    document.getElementById("result").innerHTML =
+      "🎉 Congratulations! You win " + gifts[randomIndex];
     spinning = false;
   }, 4000);
 }
