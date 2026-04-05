@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Spin & Win</title>
+
+<style>
+body {
+  text-align: center;
+  font-family: Arial;
+  background: linear-gradient(135deg, orange, #ff6a00);
+  color: white;
+}
+
+#wheel {
+  width: 300px;
+  height: 300px;
+  margin: 30px auto;
+  transition: transform 4s ease-out;
+}
+
+#pointer {
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 25px solid white;
+  margin: auto;
+}
+
+button {
+  padding: 12px 25px;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  background: black;
+  color: white;
+}
+
+#result {
+  margin-top: 20px;
+  font-size: 22px;
+  font-weight: bold;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>🎡 Spin & Win</h1>
+
+<div id="pointer"></div>
+
+<img id="wheel" src="wheel.png">
+
+<button onclick="spin()">SPIN</button>
+
+<div id="result"></div>
+
+<!-- Sound -->
+<audio id="spinSound" src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3"></audio>
+
+<script>
+let spinning = false;
+
+function spin() {
+  if (spinning) return;
+
+  spinning = true;
+
+  let wheel = document.getElementById("wheel");
+  let sound = document.getElementById("spinSound");
+
+  sound.play();
+
+  let deg = Math.floor(3000 + Math.random() * 1000);
+  wheel.style.transform = "rotate(" + deg + "deg)";
+
+  setTimeout(() => {
+    document.getElementById("result").innerHTML = "🎉 Congratulations! 🎊";
+    spinning = false;
+  }, 4000);
+}
+</script>
+
+</body>
+</html>
