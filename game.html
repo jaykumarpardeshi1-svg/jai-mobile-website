@@ -11,52 +11,35 @@ body {
   color: gold;
 }
 
-/* BIG WHEEL */
-#wheel {
-  width: 420px;
-  height: 420px;
-  border-radius: 50%;
-  margin: 30px auto;
-  border: 10px solid gold;
+/* BIG WHEEL FULL SCREEN STYLE */
+#wheelContainer {
   position: relative;
-  overflow: hidden;
-  transition: transform 4s ease-out;
+  width: 90vw;
+  height: 90vw;
+  max-width: 450px;
+  max-height: 450px;
+  margin: 40px auto;
 }
 
-/* SECTIONS */
-.section {
-  position: absolute;
-  width: 50%;
-  height: 50%;
-  transform-origin: 100% 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* COLORS */
-.sec1 { background:#ff3c3c; transform: rotate(0deg) skewY(-30deg); }
-.sec2 { background:#ffaa00; transform: rotate(72deg) skewY(-30deg); }
-.sec3 { background:#00c853; transform: rotate(144deg) skewY(-30deg); }
-.sec4 { background:#0091ea; transform: rotate(216deg) skewY(-30deg); }
-.sec5 { background:#aa00ff; transform: rotate(288deg) skewY(-30deg); }
-
-/* TEXT BIG */
-.section span {
-  transform: rotate(30deg);
-  font-size: 18px;
-  font-weight: bold;
-  color: white;
+#wheel {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 10px solid gold;
+  transition: transform 5s ease-out;
 }
 
 /* POINTER */
 #pointer {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
   width: 0;
   height: 0;
   border-left: 22px solid transparent;
   border-right: 22px solid transparent;
   border-bottom: 35px solid gold;
-  margin: auto;
 }
 
 /* BUTTON */
@@ -71,11 +54,28 @@ button {
   cursor: pointer;
 }
 
-/* RESULT */
-#result {
-  margin-top: 20px;
-  font-size: 22px;
-  font-weight: bold;
+/* POPUP */
+#popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+#popupBox {
+  background: black;
+  border: 2px solid gold;
+  padding: 30px;
+  border-radius: 12px;
+}
+
+#popupBox h2 {
+  color: gold;
 }
 </style>
 
@@ -85,54 +85,89 @@ button {
 
 <h1>🎡 Spin & Win</h1>
 
-<div id="pointer"></div>
-
-<div id="wheel">
-
-  <div class="section sec1"><span>🎧 Headphones</span></div>
-  <div class="section sec2"><span>🔊 Speaker</span></div>
-  <div class="section sec3"><span>🎧 Neckband</span></div>
-  <div class="section sec4"><span>🔌 Cable</span></div>
-  <div class="section sec5"><span>🎧 Earbuds</span></div>
-
+<div id="wheelContainer">
+  <div id="pointer"></div>
+  <canvas id="wheel"></canvas>
 </div>
 
 <button onclick="spin()">SPIN</button>
 
-<div id="result"></div>
+<!-- RESULT POPUP -->
+<div id="popup">
+  <div id="popupBox">
+    <h2 id="resultText"></h2>
+    <button onclick="closePopup()">OK</button>
+  </div>
+</div>
 
 <audio id="sound" src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3"></audio>
 
 <script>
-let spinning = false;
+const canvas = document.getElementById("wheel");
+const ctx = canvas.getContext("2d");
 
-let gifts = [
+let size = 450;
+canvas.width = size;
+canvas.height = size;
+
+let center = size / 2;
+
+let items = [
   "🎧 Headphones",
   "🔊 Speaker",
-  "🎧 Bluetooth Neckband",
-  "🔌 Charging Cable",
+  "🎧 Neckband",
+  "🔌 Cable",
   "🎧 Earbuds"
 ];
+
+function drawWheel() {
+  let arc = (2 * Math.PI) / items.length;
+
+  for (let i = 0; i < items.length; i++) {
+    let start = i * arc;
+
+    ctx.beginPath();
+    ctx.fillStyle = ["#ff3c3c","#ffaa00","#00c853","#0091ea","#aa00ff"][i];
+    ctx.moveTo(center, center);
+    ctx.arc(center, center, center, start, start + arc);
+    ctx.fill();
+
+    ctx.save();
+    ctx.translate(center, center);
+    ctx.rotate(start + arc / 2);
+    ctx.fillStyle = "white";
+    ctx.font = "18px Arial";
+    ctx.fillText(items[i], center - 100, 10);
+    ctx.restore();
+  }
+}
+
+drawWheel();
+
+let spinning = false;
 
 function spin() {
   if (spinning) return;
   spinning = true;
 
-  let wheel = document.getElementById("wheel");
-  let sound = document.getElementById("sound");
+  document.getElementById("sound").play();
 
-  sound.play();
+  let randomIndex = Math.floor(Math.random() * items.length);
+  let arc = 360 / items.length;
+  let rotate = 360 * 6 + (randomIndex * arc);
 
-  let randomIndex = Math.floor(Math.random() * gifts.length);
-
-  let deg = 360 * 6 + (randomIndex * 72); 
-  wheel.style.transform = "rotate(" + deg + "deg)";
+  canvas.style.transform = "rotate(" + rotate + "deg)";
 
   setTimeout(() => {
-    document.getElementById("result").innerHTML =
-      "🎉 Congratulations! You win " + gifts[randomIndex];
+    document.getElementById("popup").style.display = "flex";
+    document.getElementById("resultText").innerHTML =
+      "🎉 Congratulations! You win " + items[randomIndex];
     spinning = false;
-  }, 4000);
+  }, 5000);
+}
+
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
 }
 </script>
 
