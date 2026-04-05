@@ -9,72 +9,81 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #0f0f0f;
-  color: white;
+  background: #0a0a0a;
+  color: #f5d27a;
 }
 
 /* HEADER */
 header {
-  background: linear-gradient(90deg, #ff6600, #ff9933);
+  background: linear-gradient(90deg, #000000, #1a1a1a);
   padding: 20px;
   text-align: center;
-  font-size: 20px;
-  font-weight: bold;
+  border-bottom: 2px solid #d4af37;
+}
+
+header h1 {
+  color: #d4af37;
 }
 
 /* HERO */
 .hero {
   text-align: center;
   padding: 40px 20px;
-  background: #1a1a1a;
+  background: #111;
 }
 
 /* CARDS */
 .card {
-  background: #1c1c1c;
+  background: #111;
   margin: 15px;
   padding: 20px;
   border-radius: 12px;
-  box-shadow: 0 0 15px rgba(255,102,0,0.3);
+  border: 1px solid #d4af37;
+  box-shadow: 0 0 15px rgba(212,175,55,0.3);
   transition: 0.3s;
 }
 
 .card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 0 25px rgba(212,175,55,0.6);
 }
 
 /* BUTTON */
 .btn, .glow-btn {
   display: inline-block;
-  padding: 15px 25px;
-  background: linear-gradient(90deg, #ff6600, #ff9933);
-  color: white;
-  border: none;
+  padding: 14px 24px;
+  background: linear-gradient(90deg, #d4af37, #f5d27a);
+  color: black;
   border-radius: 8px;
-  font-size: 16px;
   text-decoration: none;
-  cursor: pointer;
-  box-shadow: 0 0 10px #ff6600;
+  font-weight: bold;
+  box-shadow: 0 0 10px #d4af37;
   transition: 0.3s;
 }
 
 .btn:hover, .glow-btn:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 20px #ff9933;
+  box-shadow: 0 0 20px #f5d27a;
 }
 
 /* FOOTER */
 .footer {
-  background: black;
+  background: #000;
+  color: #d4af37;
   text-align: center;
   padding: 15px;
-  margin-top: 20px;
+  border-top: 1px solid #d4af37;
 }
 
 /* IMAGE */
 img {
   border-radius: 10px;
   margin-top: 10px;
+}
+
+/* TITLE STYLE */
+h2 {
+  color: #d4af37;
 }
 </style>
 
@@ -120,8 +129,14 @@ window.onload = function() {
 }
 </script>
 <header>
-  <img src="logo.jpg" width="120" style="display:block; margin:auto;">
-  <h1>Jay Mobile Repairing Center</h1>
+
+  <img src="logo.jpg" width="120"
+  style="display:block; margin:auto; filter: drop-shadow(0 0 10px gold);">
+
+  <h1 style="text-align:center; color:#d4af37;">
+    Jay Mobile Repairing Center
+  </h1>
+
 </header>
 
 <div class="hero">
