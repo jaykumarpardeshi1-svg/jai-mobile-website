@@ -1,235 +1,127 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jay Mobile Repairing Center</title>
 
 <style>
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: Arial;
   background: #0a0a0a;
-  color: #f5d27a;
+  color: white;
 }
 
 /* HEADER */
 header {
-  background: linear-gradient(90deg, #000000, #1a1a1a);
-  padding: 20px;
+  background: black;
   text-align: center;
-  border-bottom: 2px solid #d4af37;
+  padding: 20px;
+  border-bottom: 2px solid gold;
 }
 
-header h1 {
-  color: #d4af37;
+header img {
+  width: 120px;
+  filter: drop-shadow(0 0 10px gold);
 }
 
 /* HERO */
 .hero {
   text-align: center;
-  padding: 40px 20px;
-  background: #111;
+  padding: 30px 20px;
 }
 
-/* CARDS */
+.hero h2 {
+  color: gold;
+}
+
+/* CARD */
 .card {
   background: #111;
-  margin: 20px;
-  padding: 25px;
-  border-radius: 15px;
-  border: 2px solid #d4af37;
-  box-shadow: 0 0 20px rgba(212,175,55,0.4);
+  margin: 15px;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid gold;
+  box-shadow: 0 0 15px rgba(255,215,0,0.3);
   text-align: center;
 }
 
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 25px rgba(212,175,55,0.6);
-}
-
 /* BUTTON */
-.btn, .glow-btn {
+.btn, .spin-btn {
   display: inline-block;
-  padding: 14px 24px;
+  margin-top: 10px;
+  padding: 15px 25px;
+  font-size: 16px;
   background: linear-gradient(90deg, #d4af37, #f5d27a);
   color: black;
-  border-radius: 8px;
-  text-decoration: none;
+  border: none;
+  border-radius: 10px;
   font-weight: bold;
-  box-shadow: 0 0 10px #d4af37;
-  transition: 0.3s;
+  text-decoration: none;
 }
 
-.btn:hover, .glow-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px #f5d27a;
+/* INSTAGRAM */
+.insta-btn {
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  color: white;
 }
 
 /* FOOTER */
 .footer {
-  background: #000;
-  color: #d4af37;
+  background: black;
   text-align: center;
   padding: 15px;
-  border-top: 1px solid #d4af37;
-}
-
-/* IMAGE */
-img {
-  border-radius: 10px;
-  margin-top: 10px;
-}
-
-/* TITLE STYLE */
-h2 {
-  color: #d4af37;
+  margin-top: 20px;
 }
 </style>
 
 </head>
 
 <body>
-<div id="welcomeScreen">
-  <h1 id="welcomeText">Welcome to Jay Mobile Repairing Center & Electronic</h1>
-</div>
 
-<style>
-#welcomeScreen {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #0a0f2c;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
-
-#welcomeText {
-  color: white;
-  font-size: 22px;
-  text-align: center;
-  animation: fadeIn 2s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.8); }
-  to { opacity: 1; transform: scale(1); }
-}.insta-btn {
-  display: inline-block;
-  margin-top: 10px;
-  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-  color: white;
-  font-weight: bold;
-}
-  .card {
-  background: #111;
-  margin: 20px;
-  padding: 25px;
-  border-radius: 15px;
-  border: 2px solid #d4af37;
-  box-shadow: 0 0 20px rgba(212,175,55,0.4);
-  text-align: center;
-}
-
-.spin-btn {
-  margin-top: 15px;
-  padding: 20px;
-  font-size: 20px;
-  width: 95%;
-  max-width: 350px;
-  background: linear-gradient(90deg, #d4af37, #f5d27a);
-  color: black;
-  border: none;
-  border-radius: 12px;
-  font-weight: bold;
-  box-shadow: 0 0 20px #d4af37;
-}
-</style>
-
-<script>
-window.onload = function() {
-  setTimeout(() => {
-    document.getElementById("welcomeScreen").style.display = "none";
-  }, 3000);
-}
-</script>
 <header>
-
-  <img src="logo.jpg" width="120"
-  style="display:block; margin:auto; filter: drop-shadow(0 0 10px gold);">
-
-  <h1 style="text-align:center; color:#d4af37;">
-    Jay Mobile Repairing Center
-  </h1>
-
+  <img src="logo.jpg">
+  <h1>Jay Mobile Repairing Center</h1>
 </header>
 
 <div class="hero">
   <h2>Fast & Trusted Mobile Repair</h2>
-  <p>All Mobile Problems Solved in One Place</p>
+  <p>Display | Battery | Software | Accessories</p>
 </div>
 
-<div class="container">
-
-  <div class="card">
-    <h2>🔧 Our Services</h2>
-    <p>✔ Mobile Repair</p>
-    <p>✔ Display Replacement</p>
-    <p>✔ Battery Change</p>
-    <p>✔ Software Update & Unlock</p>
-    <p>✔ All Light Fitting Accessories</p>
-  </div>
-
-  <div class="card">
+<!-- SPECIAL OFFER -->
+<div class="card">
   <h2>🎁 Special Offer</h2>
-
-  <p style="font-size:18px; line-height:1.5;">
-    Display change karne par paaiye 🎧 FREE Gift! <br>
-    <b>🎡 Spin kare aur jeete amazing prize!</b>
-  </p>
+  <p>Display change karne par paaiye 🎧 FREE Gift</p>
 
   <a href="game.html">
     <button class="spin-btn">🎡 Spin & Win</button>
   </a>
+</div>
 
-  </div>
+<!-- NEW OFFER -->
 <div class="card">
   <h2>🔥 New Offer</h2>
 
-  <p style="font-size:18px; line-height:1.5;">
-    Ab paaiye aur bhi dhamakedar offers 🎁 <br>
-    Apni kismat aazmaye 👇
+  <p style="font-size:18px;">
+    ₹200 se jyada ki kharidi par paaiye 🎁 FREE Gift
   </p>
 
-  <a href="game2.html">
-    <button class="spin-btn">🎡 Spin & Win</button>
-  </a>
+  <p style="color:red; font-weight:bold;">
+    ⚡ Limited Time Offer
+  </p>
 </div>
-  <div class="card">
-    <h2>📍 Location</h2>
-    </Ch> At.post Chinchpada Main Bajar peth Chinchpada 425417 
-      </p>
-  </div>
 
+<!-- CONTACT -->
 <div class="card">
   <h2>📞 Contact Now</h2>
 
-  <a class="btn" href="https://wa.me/917888177768" target="_blank">
-    WhatsApp Now
-  </a>
-
-  <a class="btn insta-btn" href="https://instagram.com/jay_mobile_chinchpada" target="_blank">
-    📸 Instagram
-  </a>
+  <a class="btn" href="https://wa.me/917888277762">WhatsApp</a>
+  <a class="btn insta-btn" href="#">Instagram</a>
 
 </div>
 
 <div class="footer">
-  <p>© 2026 Jay Mobile Repairing Center</p>
+  © 2026 Jay Mobile Repairing Center
 </div>
 
 </body>
