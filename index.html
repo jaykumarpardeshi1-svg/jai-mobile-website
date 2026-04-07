@@ -7,57 +7,82 @@
 body {
   margin: 0;
   font-family: Arial;
-  background: #f4f6f9;
+  background: #0a0a0a;
+  color: white;
+}
+
+/* CONTAINER (CENTER FIX) */
+.container {
+  max-width: 500px;
+  margin: auto;
 }
 
 /* HEADER */
 header {
-  background: #111;
-  color: white;
-  padding: 20px;
+  background: black;
   text-align: center;
+  padding: 20px;
+  border-bottom: 2px solid gold;
+}
+
+header img {
+  width: 100px;
+  filter: drop-shadow(0 0 10px gold);
 }
 
 /* HERO */
 .hero {
-  background: #0d6efd;
-  color: white;
-  padding: 40px 20px;
   text-align: center;
+  padding: 30px 20px;
+  background: #111;
 }
 
 /* CARD */
 .card {
-  background: white;
-  padding: 20px;
+  background: #111;
   margin: 15px;
+  padding: 20px;
   border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  border: 1px solid gold;
+  text-align: center;
 }
 
 /* BUTTON */
 .btn {
   display: inline-block;
-  padding: 12px 20px;
-  margin-top: 10px;
-  background: #0d6efd;
+  margin: 8px;
+  padding: 12px 18px;
+  background: green;
   color: white;
   border-radius: 8px;
   text-decoration: none;
-  font-weight: bold;
+}
+
+/* INSTAGRAM */
+.insta-btn {
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
 }
 
 /* SPIN BUTTON */
 .spin-btn {
-  background: orange;
+  margin-top: 15px;
+  padding: 15px 20px;
+  font-size: 18px;
+  width: 90%;
+  max-width: 300px;
+  background: linear-gradient(90deg, #d4af37, #f5d27a);
+  color: black;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
 }
 
 /* FOOTER */
 .footer {
-  background: #111;
-  color: white;
+  background: black;
   text-align: center;
   padding: 15px;
+  margin-top: 20px;
 }
 </style>
 
@@ -65,13 +90,22 @@ header {
 
 <body>
 
+<div class="container">
+
 <header>
+  <img src="logo.jpg">
   <h1>Jay Mobile Repairing Center</h1>
 </header>
 
 <div class="hero">
-  <h2>Fast & Trusted Mobile Repair</h2>
+  <h2>Fast Mobile Repair & Electronics Shop</h2>
   <p>Display | Battery | Software | Accessories</p>
+</div>
+
+<!-- SERVICES -->
+<div class="card">
+  <h2>📱 Our Services</h2>
+  <p>Mobile Repair | Display Change | Battery Replacement</p>
 </div>
 
 <!-- SPECIAL OFFER -->
@@ -80,21 +114,14 @@ header {
   <p>Display change karne par paaiye 🎧 FREE Gift</p>
 
   <a href="game.html">
-    <button class="btn spin-btn">🎡 Spin & Win</button>
+    <button class="spin-btn">🎡 Spin & Win</button>
   </a>
 </div>
 
 <!-- NEW OFFER -->
 <div class="card">
   <h2>🔥 New Offer</h2>
-
-  <p style="font-size:18px;">
-    ₹200 se jyada ki kharidi par paaiye 🎁 FREE Gift
-  </p>
-
-  <p style="color:red; font-weight:bold;">
-    ⚡ Limited Time Offer
-  </p>
+  <p>₹200 se jyada ki kharidi par paaiye 🎁 FREE Gift</p>
 </div>
 
 <!-- CONTACT -->
@@ -102,10 +129,20 @@ header {
   <h2>📞 Contact Now</h2>
 
   <a class="btn" href="https://wa.me/917888277762">WhatsApp</a>
+  <a class="btn insta-btn" href="#">Instagram</a>
+
+</div>
+
+<!-- LOCATION -->
+<div class="card">
+  <h2>📍 Location</h2>
+  <p>Main Bajar Peth, Chinchpada 425417</p>
 </div>
 
 <div class="footer">
   © 2026 Jay Mobile Repairing Center
+</div>
+
 </div>
 
 </body>
