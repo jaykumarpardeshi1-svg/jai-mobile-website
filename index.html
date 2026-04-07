@@ -8,13 +8,6 @@ body {
   margin: 0;
   font-family: Arial;
   background: #f4f6f9;
-  animation: fadeIn 1s ease-in;
-}
-
-/* PAGE FADE */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
 }
 
 /* HEADER */
@@ -40,25 +33,6 @@ header {
   margin: 15px;
   border-radius: 12px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  animation: slideUp 0.6s ease;
-  transition: 0.3s;
-}
-
-/* CARD ANIMATION */
-@keyframes slideUp {
-  from {
-    transform: translateY(25px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* HOVER EFFECT */
-.card:hover {
-  transform: translateY(-5px);
 }
 
 /* BUTTON */
@@ -76,14 +50,6 @@ header {
 /* SPIN BUTTON */
 .spin-btn {
   background: orange;
-  animation: pulse 1.5s infinite;
-}
-
-/* BUTTON PULSE */
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.06); }
-  100% { transform: scale(1); }
 }
 
 /* FOOTER */
