@@ -7,70 +7,91 @@
 body {
   margin: 0;
   font-family: Arial;
-  background: #0a0a0a;
-  color: white;
+  background: #f4f6f9;
+  animation: fadeIn 1s ease-in;
+}
+
+/* PAGE FADE */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 /* HEADER */
 header {
-  background: black;
-  text-align: center;
+  background: #111;
+  color: white;
   padding: 20px;
-  border-bottom: 2px solid gold;
-}
-
-header img {
-  width: 120px;
-  filter: drop-shadow(0 0 10px gold);
+  text-align: center;
 }
 
 /* HERO */
 .hero {
+  background: #0d6efd;
+  color: white;
+  padding: 40px 20px;
   text-align: center;
-  padding: 30px 20px;
-}
-
-.hero h2 {
-  color: gold;
 }
 
 /* CARD */
 .card {
-  background: #111;
-  margin: 15px;
+  background: white;
   padding: 20px;
+  margin: 15px;
   border-radius: 12px;
-  border: 1px solid gold;
-  box-shadow: 0 0 15px rgba(255,215,0,0.3);
-  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  animation: slideUp 0.6s ease;
+  transition: 0.3s;
+}
+
+/* CARD ANIMATION */
+@keyframes slideUp {
+  from {
+    transform: translateY(25px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* HOVER EFFECT */
+.card:hover {
+  transform: translateY(-5px);
 }
 
 /* BUTTON */
-.btn, .spin-btn {
+.btn {
   display: inline-block;
+  padding: 12px 20px;
   margin-top: 10px;
-  padding: 15px 25px;
-  font-size: 16px;
-  background: linear-gradient(90deg, #d4af37, #f5d27a);
-  color: black;
-  border: none;
-  border-radius: 10px;
-  font-weight: bold;
+  background: #0d6efd;
+  color: white;
+  border-radius: 8px;
   text-decoration: none;
+  font-weight: bold;
 }
 
-/* INSTAGRAM */
-.insta-btn {
-  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-  color: white;
+/* SPIN BUTTON */
+.spin-btn {
+  background: orange;
+  animation: pulse 1.5s infinite;
+}
+
+/* BUTTON PULSE */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+  100% { transform: scale(1); }
 }
 
 /* FOOTER */
 .footer {
-  background: black;
+  background: #111;
+  color: white;
   text-align: center;
   padding: 15px;
-  margin-top: 20px;
 }
 </style>
 
@@ -79,7 +100,6 @@ header img {
 <body>
 
 <header>
-  <img src="logo.jpg">
   <h1>Jay Mobile Repairing Center</h1>
 </header>
 
@@ -94,7 +114,7 @@ header img {
   <p>Display change karne par paaiye 🎧 FREE Gift</p>
 
   <a href="game.html">
-    <button class="spin-btn">🎡 Spin & Win</button>
+    <button class="btn spin-btn">🎡 Spin & Win</button>
   </a>
 </div>
 
@@ -116,8 +136,6 @@ header img {
   <h2>📞 Contact Now</h2>
 
   <a class="btn" href="https://wa.me/917888277762">WhatsApp</a>
-  <a class="btn insta-btn" href="#">Instagram</a>
-
 </div>
 
 <div class="footer">
