@@ -11,17 +11,16 @@ body {
   color: gold;
 }
 
-/* WHEEL CONTAINER */
+/* WHEEL SIZE BIG */
 #wheelContainer {
   position: relative;
   width: 90vw;
-  max-width: 450px;
+  max-width: 420px;
   height: 90vw;
-  max-height: 450px;
-  margin: 40px auto;
+  max-height: 420px;
+  margin: 30px auto;
 }
 
-/* WHEEL */
 #wheel {
   width: 100%;
   height: 100%;
@@ -36,14 +35,14 @@ body {
   top: -10px;
   left: 50%;
   transform: translateX(-50%);
-  border-left: 20px solid transparent;
-  border-right: 20px solid transparent;
+  border-left: 18px solid transparent;
+  border-right: 18px solid transparent;
   border-bottom: 30px solid gold;
 }
 
 /* BUTTON */
 button {
-  padding: 15px 30px;
+  padding: 15px 25px;
   font-size: 18px;
   background: gold;
   border: none;
@@ -52,7 +51,7 @@ button {
   font-weight: bold;
 }
 
-/* POPUP */
+/* POPUP BIG */
 #popup {
   position: fixed;
   top: 0;
@@ -67,13 +66,16 @@ button {
 
 #popupBox {
   background: black;
-  border: 2px solid gold;
-  padding: 25px;
-  border-radius: 10px;
+  border: 3px solid gold;
+  padding: 30px;
+  border-radius: 12px;
+  width: 80%;
+  max-width: 300px;
 }
 
 #popupBox h2 {
   color: gold;
+  font-size: 22px;
 }
 </style>
 
@@ -98,13 +100,14 @@ button {
   </div>
 </div>
 
-<audio id="sound" src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3"></audio>
+<!-- SOUND -->
+<audio id="sound" src="spin.mp3"></audio>
 
 <script>
 const canvas = document.getElementById("wheel");
 const ctx = canvas.getContext("2d");
 
-let size = 450;
+let size = 400;
 canvas.width = size;
 canvas.height = size;
 
@@ -137,7 +140,7 @@ function drawWheel() {
     ctx.translate(center, center);
     ctx.rotate(start + arc/2);
     ctx.fillStyle = "white";
-    ctx.font = "18px Arial";
+    ctx.font = "16px Arial";
     ctx.fillText(items[i], center - 120, 10);
     ctx.restore();
   }
@@ -152,7 +155,9 @@ function spin() {
   if (spinning) return;
   spinning = true;
 
-  document.getElementById("sound").play();
+  let sound = document.getElementById("sound");
+  sound.currentTime = 0;
+  sound.play().catch(() => {});
 
   let spinDeg = Math.floor(2000 + Math.random() * 2000);
   currentRotation += spinDeg;
@@ -164,12 +169,11 @@ function spin() {
     let actualDeg = currentRotation % 360;
     let arc = 360 / items.length;
 
-    // pointer top fix
     let index = Math.floor(((360 - actualDeg + 270) % 360) / arc);
 
     document.getElementById("popup").style.display = "flex";
     document.getElementById("resultText").innerHTML =
-      "🎉 Congratulations! You win " + items[index];
+      "🎉 Congratulations! 🎁<br>You Win: <b>" + items[index] + "</b>";
 
     spinning = false;
 
